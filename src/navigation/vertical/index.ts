@@ -9,4 +9,9 @@ export default [
     to: { name: 'accounting-accounts-account-types-account-type-list' },
     icon: { icon: 'tabler-file' },
   },
+  {
+    title: 'Detail Account Type',
+    to: { name:'accounting-accounts-detail-account-type'},
+    icon: { icon: 'tabler-file'}
+  }
 ]
