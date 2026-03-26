@@ -22,6 +22,8 @@ declare module 'vue-router/auto-routes' {
     '$error': RouteRecordInfo<'$error', '/:error(.*)', { error: ParamValue<true> }, { error: ParamValue<false> }>,
     'accounting-accounts-account-types-id-account-type-detail': RouteRecordInfo<'accounting-accounts-account-types-id-account-type-detail', '/accounting/accounts/accountTypes/:id/accountTypeDetail', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     'accounting-accounts-account-types-account-type-list': RouteRecordInfo<'accounting-accounts-account-types-account-type-list', '/accounting/accounts/accountTypes/accountTypeList', Record<never, never>, Record<never, never>>,
+    'accounting-accounts-detail-account-type': RouteRecordInfo<'accounting-accounts-detail-account-type', '/accounting/accounts/detailAccountType', Record<never, never>, Record<never, never>>,
+    'accounting-accounts-detail-account-type-create': RouteRecordInfo<'accounting-accounts-detail-account-type-create', '/accounting/accounts/detailAccountType/create', Record<never, never>, Record<never, never>>,
     'accounting-accounts-general-ledger': RouteRecordInfo<'accounting-accounts-general-ledger', '/accounting/accounts/general-ledger', Record<never, never>, Record<never, never>>,
     'accounting-accounts-sub-ledger': RouteRecordInfo<'accounting-accounts-sub-ledger', '/accounting/accounts/sub-ledger', Record<never, never>, Record<never, never>>,
     'accounting-accounts-sub-ledger-id-edit': RouteRecordInfo<'accounting-accounts-sub-ledger-id-edit', '/accounting/accounts/sub-ledger/:id/edit', { id: ParamValue<true> }, { id: ParamValue<false> }>,
