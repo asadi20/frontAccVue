@@ -136,7 +136,7 @@ const submit = async () => {
 
         notify({ type: 'success', text: data.message || 'Detail account type created successfully!' })
 
-        router.push('/accounting/detail-account-type')
+        router.push('/accounting/accounts/detailAccountType')
 
     } catch (error: any) {
         console.error('Submission error:', error)
