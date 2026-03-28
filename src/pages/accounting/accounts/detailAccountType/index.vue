@@ -10,10 +10,7 @@
           </VCardSubtitle>
         </div>
 
-        <VBtn
-          color="primary"
-          @click="router.push('/accounting/accounts/detailAccountType/create')"
-        >
+        <VBtn color="primary" @click="router.push('/accounting/accounts/detailAccountType/create')">
           Create
         </VBtn>
       </div>
@@ -22,49 +19,14 @@
     <VDivider />
 
     <!-- Table -->
-    <VDataTable
-      :headers="headers"
-      :items="items"
-      :loading="loading"
-      class="text-no-wrap"
-    >
-      <!-- id -->
-      <template #item.id="{ item }">
-        {{ item.id }}
-      </template>
-
-      <!-- code -->
-      <template #item.code="{ item }">
-        {{ item.code }}
-      </template>
-
-      <!-- name -->
-      <template #item.name="{ item }">
-        {{ item.name }}
-      </template>
-
-      <!-- description -->
-      <template #item.description="{ item }">
-        {{ item.description || '-' }}
-      </template>
-
+    <VDataTable :headers="headers" :items="items" :loading="loading" class="text-no-wrap">
       <!-- actions -->
       <template #item.actions="{ item }">
-        <VBtn
-          size="small"
-          color="primary"
-          variant="text"
-          @click="editItem(item)"
-        >
+        <VBtn size="small" color="primary" variant="text" @click="editItem(item)">
           Edit
         </VBtn>
 
-        <VBtn
-          size="small"
-          color="error"
-          variant="text"
-          @click="deleteItem(item)"
-        >
+        <VBtn size="small" color="error" variant="text" @click="deleteItem(item)">
           Delete
         </VBtn>
       </template>
@@ -96,7 +58,7 @@ const fetchItems = async () => {
   loading.value = true
 
   try {
-    const response = await fetch(`${API_BASE}/accounting/detail-account-types`, {
+    const response = await fetch(`${API_BASE}/accounting/accounts/detail-account-types`, {
       headers: {
         Accept: 'application/json',
       },
@@ -117,7 +79,7 @@ const fetchItems = async () => {
 }
 
 const editItem = (item: any) => {
-  router.push(`/accounting/detail-account-types/${item.id}/edit`)
+  router.push(`/accounting/accounts/detailAccountType/${item.id}/edit`)
 }
 
 const deleteItem = async (item: any) => {
@@ -125,7 +87,7 @@ const deleteItem = async (item: any) => {
 
   try {
     const response = await fetch(
-      `${API_BASE}/accounting/detail-account-types/${item.id}`,
+      `${API_BASE}/accounting/accounts/detailAccountType/${item.id}`,
       {
         method: 'DELETE',
         headers: {
