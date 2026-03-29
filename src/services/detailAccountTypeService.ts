@@ -12,7 +12,7 @@ export async function getDetailAccountTypeById(id: Number) {
 }
 
 export async function getAllDetailAccountType() {
-    const response = await fetch(`${API_BASE}/accounting/accounts/detail-account-type`, {
+    const response = await fetch(`${API_BASE}/accounting/accounts/detail-account-types`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json'
