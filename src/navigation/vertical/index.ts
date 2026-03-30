@@ -18,5 +18,10 @@ export default [
     title: 'Detail Account Type',
     to: { name:'accounting-accounts-detail-account-type'},
     icon: { icon: 'tabler-file'}
+  },
+  {
+    title: 'Journal Entry',
+    to: {name: 'accounting-journals-entries'},
+    icon: { icon: 'tabler-file'}
   }
 ]

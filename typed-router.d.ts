@@ -32,6 +32,8 @@ declare module 'vue-router/auto-routes' {
     'accounting-accounts-sub-ledger': RouteRecordInfo<'accounting-accounts-sub-ledger', '/accounting/accounts/sub-ledger', Record<never, never>, Record<never, never>>,
     'accounting-accounts-sub-ledger-id-edit': RouteRecordInfo<'accounting-accounts-sub-ledger-id-edit', '/accounting/accounts/sub-ledger/:id/edit', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     'accounting-accounts-sub-ledger-create': RouteRecordInfo<'accounting-accounts-sub-ledger-create', '/accounting/accounts/sub-ledger/create', Record<never, never>, Record<never, never>>,
+    'accounting-journals-entries': RouteRecordInfo<'accounting-journals-entries', '/accounting/journals/entries', Record<never, never>, Record<never, never>>,
+    'accounting-journals-entries-create': RouteRecordInfo<'accounting-journals-entries-create', '/accounting/journals/entries/create', Record<never, never>, Record<never, never>>,
     'login': RouteRecordInfo<'login', '/login', Record<never, never>, Record<never, never>>,
     'second-page': RouteRecordInfo<'second-page', '/second-page', Record<never, never>, Record<never, never>>,
   }
