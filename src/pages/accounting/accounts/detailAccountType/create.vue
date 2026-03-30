@@ -111,7 +111,7 @@ const submit = async () => {
     loading.value = true
 
     try {
-        const response = await fetch(`${API_BASE}/accounting/detail-account-types`, {
+        const response = await fetch(`${API_BASE}/accounting/accounts/detail-account-types`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
