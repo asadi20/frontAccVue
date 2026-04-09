@@ -11,3 +11,24 @@ export async function getAllJournalEntries() {
 
     return data
 }
+
+// get all accounts from Chart of accounts with level = 2
+export async function getAllSubLedger() {
+    const response = await fetch(`${API_BASE}/accounting/accounts/sub-ledgers`,{
+        method: 'GET',
+        headers: {  'Accept': 'application/json'}
+    })
+
+    const res = await response.json()
+    return res.data;
+}
+
+export async function getAllDetailAccountsWithSubId(subId: number){
+    const response = await fetch(`${API_BASE}/accounting/accounts/sub-ledgers/${subId}/detail-accounts`,{
+        method: 'GET',
+        headers: {'Accept': 'application/json'}
+    })
+
+    const res = await response.json()
+    return res.data
+}
