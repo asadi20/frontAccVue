@@ -22,3 +22,14 @@ export async function getAllDetailAccountType() {
     const data = await response.json()
     return data
 }
+
+export async function getAllSubLedgerWithDetailAccountTypeLinks(){
+    const response = await fetch(`${API_BASE}/accounting/accounts/sub-ledgers/detail-accounts`,{
+        method: 'GET',
+        headers: {'Accept': 'appliaction/json'}
+    })
+
+    const data =await response.json()
+    return data
+}
+
