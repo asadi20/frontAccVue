@@ -23,5 +23,10 @@ export default [
     title: 'Journal Entry',
     to: {name: 'accounting-journals-entries'},
     icon: { icon: 'tabler-file'}
+  },
+  {
+    title: 'SubLedger-Detail Links',
+    to: { name: 'accounting-accounts-sub-ledger-detail-type-link'},
+    icon: { icon: 'tabler-file'}
   }
 ]
