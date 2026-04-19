@@ -1,10 +1,10 @@
 <script setup>
 
 import { reactive, ref } from 'vue'
-import { getAllSubLedger, getAllDetailAccountsWithSubId } from '@/services/journalEntryService'
+import { getAllSubLedger, getAllDetailAccountsWithSubId, addJournalEntry } from '@/services/journalEntryService'
 
 const form = reactive({
-  document_no: '',
+  document_number: '',
   entry_date: '',
   description: '',
 })
@@ -96,6 +96,16 @@ const totalCredit = computed(() => {
 
 })
 
+async function addJournal() {
+  const payload = {
+    ...form,
+    lines: [...lines.value]
+  }
+
+  const res = await addJournalEntry(payload)
+  alert(res.message)
+}
+
 onMounted(() => {
   loadCOA()
 })
@@ -120,15 +130,19 @@ onMounted(() => {
       <VRow>
 
         <VCol cols="12" md="4">
-          <VTextField v-model="form.document_no" label="Document Number" />
+          <VTextField v-model="form.document_number" label="Document Number" />
         </VCol>
 
         <VCol cols="12" md="4">
-          <VDateInput v-model="form.entry_date" label="Entry Date" />
+          <VTextField v-model="form.entry_date" label="Entry Datee" />
         </VCol>
 
         <VCol cols="12" md="4">
           <VTextField v-model="form.description" label="Description" />
+        </VCol>
+        <VCol cols="12" md="4">
+          <VBtn @click="addJournal"> Save Journal</VBtn>
+
         </VCol>
 
       </VRow>
