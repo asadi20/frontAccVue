@@ -32,3 +32,17 @@ export async function getAllDetailAccountsWithSubId(subId: number){
     const res = await response.json()
     return res.data
 }
+
+export async function addJournalEntry(data: any){
+    const response = await fetch(`${API_BASE}/accounting/journal/entries`,{
+       method: 'POST',
+       body: JSON.stringify(data),
+       headers: {
+        'content-type': 'application/json',
+        'accept': 'application/json'
+       }
+    });
+
+    const res = await response.json()
+    return res
+}
