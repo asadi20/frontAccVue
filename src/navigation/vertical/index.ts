@@ -28,5 +28,15 @@ export default [
     title: 'SubLedger-Detail Links',
     to: { name: 'accounting-accounts-sub-ledger-detail-type-link'},
     icon: { icon: 'tabler-file'}
+  },
+  {
+    title: 'RBAC',
+    icon: {icon:'tabler-file'},
+    children:[
+      {
+        title: 'Roles',
+        to: 'rbac-roles'
+      },
+    ]
   }
 ]
