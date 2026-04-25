@@ -37,6 +37,8 @@ declare module 'vue-router/auto-routes' {
     'accounting-journals-entries': RouteRecordInfo<'accounting-journals-entries', '/accounting/journals/entries', Record<never, never>, Record<never, never>>,
     'accounting-journals-entries-create': RouteRecordInfo<'accounting-journals-entries-create', '/accounting/journals/entries/create', Record<never, never>, Record<never, never>>,
     'login': RouteRecordInfo<'login', '/login', Record<never, never>, Record<never, never>>,
+    'rbac-roles': RouteRecordInfo<'rbac-roles', '/rbac/roles', Record<never, never>, Record<never, never>>,
+    'rbac-roles-create': RouteRecordInfo<'rbac-roles-create', '/rbac/roles/create', Record<never, never>, Record<never, never>>,
     'second-page': RouteRecordInfo<'second-page', '/second-page', Record<never, never>, Record<never, never>>,
   }
 }
