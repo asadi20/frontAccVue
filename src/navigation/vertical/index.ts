@@ -37,6 +37,10 @@ export default [
         title: 'Roles',
         to: 'rbac-roles'
       },
+      {
+        title: 'Permissions',
+        to: 'rbac-permissions'
+      }
     ]
   }
 ]
