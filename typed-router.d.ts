@@ -41,6 +41,8 @@ declare module 'vue-router/auto-routes' {
     'rbac-permissions-create': RouteRecordInfo<'rbac-permissions-create', '/rbac/permissions/create', Record<never, never>, Record<never, never>>,
     'rbac-roles': RouteRecordInfo<'rbac-roles', '/rbac/roles', Record<never, never>, Record<never, never>>,
     'rbac-roles-create': RouteRecordInfo<'rbac-roles-create', '/rbac/roles/create', Record<never, never>, Record<never, never>>,
+    'rbac-users': RouteRecordInfo<'rbac-users', '/rbac/users', Record<never, never>, Record<never, never>>,
+    'rbac-users-create': RouteRecordInfo<'rbac-users-create', '/rbac/users/create', Record<never, never>, Record<never, never>>,
     'second-page': RouteRecordInfo<'second-page', '/second-page', Record<never, never>, Record<never, never>>,
   }
 }

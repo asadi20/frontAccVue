@@ -34,6 +34,10 @@ export default [
     icon: {icon:'tabler-file'},
     children:[
       {
+        title: 'Users',
+        to: 'rbac-users'
+      },
+      {
         title: 'Roles',
         to: 'rbac-roles'
       },
