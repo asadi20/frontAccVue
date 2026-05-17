@@ -27,3 +27,34 @@ export const createUser = async (userData :any) => {
     return res
 
 }
+
+export const getUserById = async (userId :number) => {
+    const response = await fetch(`${API_BASE_URL}/rbac/users/${userId}`,{
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+
+    const res = await response.json();
+
+    if(res){
+        return res;
+    }
+}
+
+
+export const getRolesByUser = async (userId :number) => {
+    const response = await fetch(`${API_BASE_URL}/rbac/users/${userId}/roles`,{
+        method: 'GET',
+        headers: {
+            'Accept':'application/json',
+            'content-type':'application/json'
+        }
+    })
+
+    const res = await response.json();
+    return res;
+
+}
