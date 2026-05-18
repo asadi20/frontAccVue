@@ -8,13 +8,13 @@ export const getAllUsers = async () => {
             'Content-Type': 'application/json'
         }
     })
-    
+
     const res = await response.json();
     return res;
 }
 
-export const createUser = async (userData :any) => {
-    const response = await fetch(`${API_BASE_URL}/rbac/users`,{
+export const createUser = async (userData: any) => {
+    const response = await fetch(`${API_BASE_URL}/rbac/users`, {
         method: 'POST',
         body: JSON.stringify(userData),
         headers: {
@@ -28,8 +28,8 @@ export const createUser = async (userData :any) => {
 
 }
 
-export const getUserById = async (userId :number) => {
-    const response = await fetch(`${API_BASE_URL}/rbac/users/${userId}`,{
+export const getUserById = async (userId: number) => {
+    const response = await fetch(`${API_BASE_URL}/rbac/users/${userId}`, {
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -39,22 +39,36 @@ export const getUserById = async (userId :number) => {
 
     const res = await response.json();
 
-    if(res){
+    if (res) {
         return res;
     }
 }
 
 
-export const getRolesByUser = async (userId :number) => {
-    const response = await fetch(`${API_BASE_URL}/rbac/users/${userId}/roles`,{
+export const getRolesByUser = async (userId: number) => {
+    const response = await fetch(`${API_BASE_URL}/rbac/users/${userId}/roles`, {
         method: 'GET',
         headers: {
-            'Accept':'application/json',
-            'content-type':'application/json'
+            'Accept': 'application/json',
+            'content-type': 'application/json'
         }
     })
 
     const res = await response.json();
     return res;
 
+}
+
+export const updateUserWithRoles = async (userId: number, userData: any) => {
+    const response = await fetch(`${API_BASE_URL}/rbac/users/${userId}`, {
+        method: 'PUT',
+        body: JSON.stringify(userData),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const res = await response.json();
+    return res;
 }
