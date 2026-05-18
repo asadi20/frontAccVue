@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter, useRoute } from 'vue-router';
-import { getRolesByUser } from '@/services/rbac/userService';
+import { getRolesByUser, updateUserWithRoles } from '@/services/rbac/userService';
 
 
 const router = useRouter();
@@ -32,10 +32,15 @@ const fetchUserRoles = async (userId: number) => {
     allRoles.value = res.data.roles;
     rolesData.value = res.data.userData.roles;
     Object.assign(userData, res.data.userData)
+    userData.roleIds = res.data.userData.roles.map((role: Role) => role.id)
 }
 
 const saveForm = async () => {
-    console.log(userData);
+    const res = await updateUserWithRoles(Number(route.params.id), userData);
+    if (res) {
+        alert('OK');
+        console.log(res)
+    }
 }
 
 onMounted(async () => {
