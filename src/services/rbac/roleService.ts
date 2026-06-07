@@ -2,8 +2,8 @@ const API_BASE_URL = 'http://localhost:8000/api';
 
 // get All Roles
 export const getAllRoles = async () => {
-    const response = await fetch(`${API_BASE_URL}/rbac/roles`,{
-        method:'GET',
+    const response = await fetch(`${API_BASE_URL}/rbac/roles`, {
+        method: 'GET',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'aaplication/json'
@@ -14,8 +14,8 @@ export const getAllRoles = async () => {
     return res
 }
 
-export const createRole = async (data: any) =>{
-    const response = await fetch(`${API_BASE_URL}/rbac/roles`,{
+export const createRole = async (data: any) => {
+    const response = await fetch(`${API_BASE_URL}/rbac/roles`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -26,4 +26,40 @@ export const createRole = async (data: any) =>{
 
     const res = response.json()
     return res
+}
+
+export const getRoleById = async (roleId: number) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/rbac/role/${roleId}/permissions`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        const res = response.json();
+        return res
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const updateRoleWithPermissions = async (roleId: number, roleData: any) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/rbac/roles/${roleId}`,{
+            method: 'PUT',
+            body: JSON.stringify(roleData),
+            headers: {
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            }
+        })
+
+        const res = response.json();
+        return res;
+        
+    } catch(error) {
+        throw error
+
+    }
 }
