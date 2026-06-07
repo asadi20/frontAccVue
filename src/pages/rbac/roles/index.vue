@@ -4,23 +4,33 @@ import { getAllRoles } from '@/services/rbac/roleService';
 
 const router = useRouter()
 const headers = [
-    {title: 'ID', key: 'id'},
-    {title: 'Role name', key: 'name'},
-    {title: 'Guard name', key: 'guard_name'}
+    { title: 'ID', key: 'id' },
+    { title: 'Role name', key: 'name' },
+    { title: 'Guard name', key: 'guard_name' },
+    { title: 'actions', key: 'actions', sortable: false }
 ];
 
-const allRoles = ref([]);
+interface Role {
+    id: number,
+    name: string,
+    guard_name: string
+}
+
+const allRoles = ref<Role[]>([]);
 
 const fetchAllRoles = async () => {
     const res = await getAllRoles();
     allRoles.value = res.data;
 }
 
-function addNewRole(){
+function addNewRole() {
     router.push('/rbac/roles/create');
 }
+const editItem = async (roleId: number) => {
+    router.push(`/rbac/roles/${roleId}/edit`)
+}
 
-onMounted(()=>{
+onMounted(() => {
     fetchAllRoles()
 })
 
@@ -35,10 +45,13 @@ onMounted(()=>{
         <VDivider />
         <VCardItem>
             <VRow>
-            <VDataTable :headers="headers" :items="allRoles">
+                <VDataTable :headers="headers" :items="allRoles">
+                    <template #item.actions="{ item }">
+                        <VBtn size="small" color="primary" variant="text" @click="editItem(item.id)">Edit</VBtn>
 
-            </VDataTable>
-        </VRow>
+                    </template>
+                </VDataTable>
+            </VRow>
         </VCardItem>
     </VCard>
 
