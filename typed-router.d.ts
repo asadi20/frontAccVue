@@ -40,6 +40,7 @@ declare module 'vue-router/auto-routes' {
     'rbac-permissions': RouteRecordInfo<'rbac-permissions', '/rbac/permissions', Record<never, never>, Record<never, never>>,
     'rbac-permissions-create': RouteRecordInfo<'rbac-permissions-create', '/rbac/permissions/create', Record<never, never>, Record<never, never>>,
     'rbac-roles': RouteRecordInfo<'rbac-roles', '/rbac/roles', Record<never, never>, Record<never, never>>,
+    'rbac-roles-id-edit': RouteRecordInfo<'rbac-roles-id-edit', '/rbac/roles/:id/edit', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     'rbac-roles-create': RouteRecordInfo<'rbac-roles-create', '/rbac/roles/create', Record<never, never>, Record<never, never>>,
     'rbac-users': RouteRecordInfo<'rbac-users', '/rbac/users', Record<never, never>, Record<never, never>>,
     'rbac-users-id-edit': RouteRecordInfo<'rbac-users-id-edit', '/rbac/users/:id/edit', { id: ParamValue<true> }, { id: ParamValue<false> }>,
