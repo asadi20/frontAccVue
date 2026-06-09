@@ -4,6 +4,7 @@ import authV1BottomShape from '@images/svg/auth-v1-bottom-shape.svg?raw'
 import authV1TopShape from '@images/svg/auth-v1-top-shape.svg?raw'
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 import { themeConfig } from '@themeConfig'
+import { login } from '@/services/auth/authService'
 
 definePage({
   meta: {
@@ -13,10 +14,19 @@ definePage({
 })
 
 const form = ref({
-  email: '',
+  user_name: '',
   password: '',
   remember: false,
 })
+
+const submitLogin = async () => {
+  const response = await login(form.value)
+  if (response.success) {
+    alert('logged In');
+  } else {
+    alert(response.message)
+  }
+}
 
 const isPasswordVisible = ref(false)
 </script>
@@ -25,23 +35,15 @@ const isPasswordVisible = ref(false)
   <div class="auth-wrapper d-flex align-center justify-center pa-4">
     <div class="position-relative my-sm-16">
       <!-- 👉 Top shape -->
-      <VNodeRenderer
-        :nodes="h('div', { innerHTML: authV1TopShape })"
-        class="text-primary auth-v1-top-shape d-none d-sm-block"
-      />
+      <VNodeRenderer :nodes="h('div', { innerHTML: authV1TopShape })"
+        class="text-primary auth-v1-top-shape d-none d-sm-block" />
 
       <!-- 👉 Bottom shape -->
-      <VNodeRenderer
-        :nodes="h('div', { innerHTML: authV1BottomShape })"
-        class="text-primary auth-v1-bottom-shape d-none d-sm-block"
-      />
+      <VNodeRenderer :nodes="h('div', { innerHTML: authV1BottomShape })"
+        class="text-primary auth-v1-bottom-shape d-none d-sm-block" />
 
       <!-- 👉 Auth Card -->
-      <VCard
-        class="auth-card"
-        max-width="460"
-        :class="$vuetify.display.smAndUp ? 'pa-6' : 'pa-0'"
-      >
+      <VCard class="auth-card" max-width="460" :class="$vuetify.display.smAndUp ? 'pa-6' : 'pa-0'">
         <VCardItem class="justify-center">
           <VCardTitle>
             <RouterLink to="/">
@@ -65,38 +67,25 @@ const isPasswordVisible = ref(false)
         </VCardText>
 
         <VCardText>
-          <VForm @submit.prevent="() => {}">
+          <VForm @submit.prevent="() => { }">
             <VRow>
               <!-- email -->
               <VCol cols="12">
-                <AppTextField
-                  v-model="form.email"
-                  autofocus
-                  label="Email or Username"
-                  type="email"
-                  placeholder="johndoe@email.com"
-                />
+                <AppTextField v-model="form.user_name" autofocus label="Email or Username" type="text"
+                  placeholder="johndoe@email.com" />
               </VCol>
 
               <!-- password -->
               <VCol cols="12">
-                <AppTextField
-                  v-model="form.password"
-                  label="Password"
-                  placeholder="············"
-                  :type="isPasswordVisible ? 'text' : 'password'"
-                  autocomplete="password"
+                <AppTextField v-model="form.password" label="Password" placeholder="············"
+                  :type="isPasswordVisible ? 'text' : 'password'" autocomplete="password"
                   :append-inner-icon="isPasswordVisible ? 'tabler-eye-off' : 'tabler-eye'"
-                  @click:append-inner="isPasswordVisible = !isPasswordVisible"
-                />
+                  @click:append-inner="isPasswordVisible = !isPasswordVisible" />
 
                 <!-- remember me checkbox -->
                 <div class="d-flex align-center justify-space-between flex-wrap my-6">
-                  <VCheckbox
-                    v-model="form.remember"
-                    label="Remember me"
-                  />
-<!--
+                  <VCheckbox v-model="form.remember" label="Remember me" />
+                  <!--
                   <RouterLink
                     class="text-primary"
                     :to="{ name: 'pages-authentication-forgot-password-v1' }"
@@ -106,19 +95,13 @@ const isPasswordVisible = ref(false)
                 </div>
 
                 <!-- login button -->
-                <VBtn
-                  block
-                  type="submit"
-                >
+                <VBtn block type="submit" @click="submitLogin">
                   Login
                 </VBtn>
               </VCol>
 
               <!-- create account -->
-              <VCol
-                cols="12"
-                class="text-body-1 text-center"
-              >
+              <VCol cols="12" class="text-body-1 text-center">
                 <span class="d-inline-block">
                   New on our platform?
                 </span>
@@ -130,20 +113,14 @@ const isPasswordVisible = ref(false)
                 </RouterLink> -->
               </VCol>
 
-              <VCol
-                cols="12"
-                class="d-flex align-center"
-              >
+              <VCol cols="12" class="d-flex align-center">
                 <VDivider />
                 <span class="mx-4 text-high-emphasis">or</span>
                 <VDivider />
               </VCol>
 
               <!-- auth providers -->
-              <VCol
-                cols="12"
-                class="text-center"
-              >
+              <VCol cols="12" class="text-center">
                 <AuthProvider />
               </VCol>
             </VRow>
