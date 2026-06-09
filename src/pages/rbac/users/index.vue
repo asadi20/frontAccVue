@@ -1,3 +1,9 @@
+<route lang="yaml">
+meta:
+  requiresAuth: true
+  permissions: ['users.read']
+</route>
+
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { getAllUsers } from '@/services/rbac/userService';
@@ -10,7 +16,7 @@ const headers = [
     { title: 'E-Mail', key: 'email' },
     { title: 'Created at', key: 'created_at' },
     { title: 'Updated at', key: 'updated_at' },
-    { title: 'Actions', key: 'actions', sortable: false}
+    { title: 'Actions', key: 'actions', sortable: false }
 ]
 
 const items = ref([])
@@ -22,7 +28,7 @@ const loadAllUsers = async () => {
     }
 }
 
-const editItem = async (item :any) => {
+const editItem = async (item: any) => {
     router.push(`/rbac/users/${item.id}/edit`)
 }
 
@@ -39,8 +45,8 @@ onMounted(async () => {
         <VDivider />
         <VCardItem>
             <VDataTable :headers="headers" :items="items">
-                <template #item.actions = "{item}">
-                    <VBtn size="small" color="primary" variant="text" @click ="editItem(item)">Edit</VBtn>
+                <template #item.actions="{ item }">
+                    <VBtn size="small" color="primary" variant="text" @click="editItem(item)">Edit</VBtn>
                     <VBtn>Delete</VBtn>
                 </template>
             </VDataTable>

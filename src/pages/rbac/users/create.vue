@@ -1,3 +1,8 @@
+<route lang="yaml">
+meta:
+  requiresAuth: true
+  permissions: ['users.read', 'users.manage']
+</route>
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { createUser } from '@/services/rbac/userService';
