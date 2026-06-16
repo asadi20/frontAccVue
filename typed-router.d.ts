@@ -45,6 +45,7 @@ declare module 'vue-router/auto-routes' {
     'rbac-users': RouteRecordInfo<'rbac-users', '/rbac/users', Record<never, never>, Record<never, never>>,
     'rbac-users-id-edit': RouteRecordInfo<'rbac-users-id-edit', '/rbac/users/:id/edit', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     'rbac-users-create': RouteRecordInfo<'rbac-users-create', '/rbac/users/create', Record<never, never>, Record<never, never>>,
+    'register': RouteRecordInfo<'register', '/register', Record<never, never>, Record<never, never>>,
     'second-page': RouteRecordInfo<'second-page', '/second-page', Record<never, never>, Record<never, never>>,
   }
 }
