@@ -33,13 +33,20 @@ export const login = async (userData: any) => {
 // Register Method.
 export const register = async (userData: any) => {
     try {
+        await fetch(`${BASE_URL}/sanctum/csrf-cookie`, {
+            credentials: 'include'
+        });
+        const xsrfToken = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))?.split('=')[1]
         const response = await fetch(`${API_BASE_URL}/auth/register`, {
             method: 'POST',
-            body: JSON.stringify(userData),
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-XSRF-TOKEN': xsrfToken ? decodeURIComponent(xsrfToken) : ''
+            },
+            body: JSON.stringify(userData),
         })
 
         const res = await response.json()
