@@ -25,6 +25,7 @@ export const useAuthStore = defineStore('authStore', {
                     this.user = data
                 }
             } catch (error) {
+                console.error('FETCH USER ERROR:', error)
                 this.user = null
             } finally {
                 this.initialized = true
