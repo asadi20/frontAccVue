@@ -5,6 +5,8 @@ import authV1TopShape from '@images/svg/auth-v1-top-shape.svg?raw'
 import { VNodeRenderer } from '@layouts/components/VNodeRenderer'
 import { themeConfig } from '@themeConfig'
 import { login } from '@/services/auth/authService'
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '@/stores/authStore'
 
 definePage({
   meta: {
@@ -12,6 +14,9 @@ definePage({
     public: true,
   },
 })
+
+const router = useRouter()
+const authStore = useAuthStore()
 
 const form = ref({
   user_name: '',
@@ -22,7 +27,8 @@ const form = ref({
 const submitLogin = async () => {
   const response = await login(form.value)
   if (response.success) {
-    alert('logged In');
+    await authStore.fetchUser()
+    router.push('/')
   } else {
     alert(response.message)
   }
@@ -67,7 +73,7 @@ const isPasswordVisible = ref(false)
         </VCardText>
 
         <VCardText>
-          <VForm @submit.prevent="() => { }">
+          <VForm @submit.prevent="submitLogin">
             <VRow>
               <!-- email -->
               <VCol cols="12">
@@ -95,7 +101,7 @@ const isPasswordVisible = ref(false)
                 </div>
 
                 <!-- login button -->
-                <VBtn block type="submit" @click="submitLogin">
+                <VBtn block type="submit">
                   Login
                 </VBtn>
               </VCol>
