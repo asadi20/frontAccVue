@@ -13,7 +13,7 @@ const addPerm = async() => {
     const res = await createPermission(permData);
     if(res){
         alert(res.message);
-        router.push('rbac-permissions');
+        router.push('/rbac/permissions');
     }
 }
 
