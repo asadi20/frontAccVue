@@ -38,6 +38,7 @@ declare module 'vue-router/auto-routes' {
     'accounting-journals-entries-create': RouteRecordInfo<'accounting-journals-entries-create', '/accounting/journals/entries/create', Record<never, never>, Record<never, never>>,
     'login': RouteRecordInfo<'login', '/login', Record<never, never>, Record<never, never>>,
     'rbac-permissions': RouteRecordInfo<'rbac-permissions', '/rbac/permissions', Record<never, never>, Record<never, never>>,
+    'rbac-permissions-id-edit': RouteRecordInfo<'rbac-permissions-id-edit', '/rbac/permissions/:id/edit', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     'rbac-permissions-create': RouteRecordInfo<'rbac-permissions-create', '/rbac/permissions/create', Record<never, never>, Record<never, never>>,
     'rbac-roles': RouteRecordInfo<'rbac-roles', '/rbac/roles', Record<never, never>, Record<never, never>>,
     'rbac-roles-id-edit': RouteRecordInfo<'rbac-roles-id-edit', '/rbac/roles/:id/edit', { id: ParamValue<true> }, { id: ParamValue<false> }>,
