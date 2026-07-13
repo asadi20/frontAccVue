@@ -2,7 +2,7 @@
 import { useRouter, useRoute } from 'vue-router';
 import { getPermissionById, updatePermission } from '@/services/rbac/permissionService';
 
-const router = useRoute()
+const router = useRouter()
 const route = useRoute()
 
 interface Permission {
@@ -25,9 +25,12 @@ const fetchPerm = async (permId: number) => {
 }
 
 const updatePerm = async () => {
-    const res = await updatePermission(permData);
+    const res = await updatePermission(permData.value);
     if (res) {
-        alert(res.data)
+        alert(res.message)
+        router.push('/rbac/permissions')
+    } else {
+      alert('error updating')
     }
 }
 
