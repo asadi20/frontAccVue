@@ -1,7 +1,7 @@
 <route lang="yaml">
 meta:
   requiresAuth: true
-  permissions: ['users.read', 'users.manage']
+  permissions: ['users-create']
 </route>
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
