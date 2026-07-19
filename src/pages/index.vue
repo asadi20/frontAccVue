@@ -4,49 +4,63 @@ meta:
 </route>
 
 <script setup lang="ts">
-const dash_stats = ref([
-  {
-    title: 'users',
-    stats: '3',
+
+import { getDashStats } from '@/services/dashboardService'
+
+type DashboardStatApiItem = {
+  title: string,
+  amount: number
+}
+
+type DashStat = {
+  title: string,
+  stats: string,
+  icon: string,
+  color: string
+}
+
+const dashboardMeta = {
+  user: {
     icon: 'tabler-users',
     color: 'primary',
+    title: 'Users',
   },
-  {
-    title: 'Documents',
-    stats: '120',
-    icon: 'tabler-file',
-    color: 'error'
-  },
-  {
-    title: 'Sales',
-    stats: '230M',
+  sell: {
     icon: 'tabler-basket-up',
-    color: 'success'
+    color: 'success',
+    title: 'Sales',
   },
-  {
-    title: 'Buys',
-    stats: '220M',
-    icon: 'tabler-basket-down',
-    color: 'error'
+  document: {
+    icon: 'tabler-file',
+    color: 'error',
+    title: 'Documents',
   },
-  {
-    title: 'Employee',
-    stats: '10',
+  employee: {
     icon: 'tabler-users-group',
-    color: 'primary'
+    color: 'primary',
+    title: 'Employee'
   }
-])
+} as const
 
-onMounted(async () => {
-  const response = await fetch(`/api/dash_stats`, {
-    method: 'GET',
-    headers: {
-      'content-type': 'application/json'
+const dash_stats = ref<DashStat[]>([])
+
+const transformDashboardStats = (data: Record<string, DashboardStatApiItem>): DashStat[] => {
+  return Object.entries(data).map(([key, value]) => {
+    const meta = dashboardMeta[key as keyof typeof dashboardMeta]
+
+    return {
+      title: meta?.title ?? value.title,
+      stats: String(value.amount),
+      icon: meta?.icon ?? 'tabler-chart-bar',
+      color: meta?.color ?? 'secondary',
     }
   })
+}
 
-  const res = await response.json()
-  dash_stats.value = res.data
+onMounted(async () => {
+  const response = await getDashStats()
+
+  dash_stats.value = transformDashboardStats(response.data)
 })
 
 </script>
