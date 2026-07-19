@@ -1,8 +1,10 @@
-const API_BASE = import.meta.env.VITE_API_BASE_URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
 export async function getAllDetailAccount() {
-    const response = await fetch(`${API_BASE}/accounting/accounts/detail-accounts`, {
+    const response = await fetch(`${API_BASE_URL}/accounting/accounts/detail-accounts`, {
         method: 'GET',
+        credentials: 'include',
         headers: { 'Accept': 'Application/json' },
     })
 
@@ -12,8 +14,9 @@ export async function getAllDetailAccount() {
 }
 
 export async function getDetailAccountById(id: number){
-    const response = await fetch(`${API_BASE}/accounting/accounts/detail-accounts/${id}`,{
+    const response = await fetch(`${API_BASE_URL}/accounting/accounts/detail-accounts/${id}`,{
         method: 'GET',
+        credentials: 'include',
         headers: {'Accept': 'application/json'}
     })
 
@@ -23,7 +26,7 @@ export async function getDetailAccountById(id: number){
 }
 
 export async function updateDetailAccountById(id: number, data: any){
-    const response = await fetch(`${API_BASE}/accounting/accounts/detail-accounts/${id}`,{
+    const response = await fetch(`${API_BASE_URL}/accounting/accounts/detail-accounts/${id}`,{
         method: 'PUT',
         headers:{
             'Content-type': 'application/json',

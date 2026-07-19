@@ -1,9 +1,11 @@
-const API_BASE = import.meta.env.VITE_API_BASE_URL
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
 
 export async function getAllSubLedgerWithDetailAccountTypeLinks() {
-    const response = await fetch(`${API_BASE}/accounting/accounts/sub-ledgers/detail-accounts`,{
+    const response = await fetch(`${API_BASE_URL}/accounting/accounts/sub-ledgers/detail-accounts`,{
         method: 'GET',
+        credentials: 'include',
         headers: {'Accept': 'application/json'}
     })
 
@@ -13,7 +15,7 @@ export async function getAllSubLedgerWithDetailAccountTypeLinks() {
 // linkDetailAccountTypeToSubLedger
 export async function linkDetailAccountType(formData: any)
 {
-    const response = await fetch(`${API_BASE}/accounting/accounts/sub-ledgers/detail-accounts`,{
+    const response = await fetch(`${API_BASE_URL}/accounting/accounts/sub-ledgers/detail-accounts`,{
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json',

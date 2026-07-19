@@ -1,9 +1,11 @@
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
+const BASE_URL = import.meta.env.VITE_BASE_URL
 
 // get All Account types from backend
 export async function getAccountTypes() {
     const response = await fetch(`${API_BASE_URL}/accounting/account-types`, {
         method: 'GET',
+        credentials: 'include',
         headers: { Accept: 'application/json' }
     });
 
@@ -16,6 +18,7 @@ export async function getAccountTypes() {
 export async function getAccountTypeDetail(id: number) {
     const response = await fetch(`${API_BASE_URL}/accounting/account-types/${id}`,{
         method: 'GET',
+        credentials: 'include',
         headers: {Accept: 'application/json'}
     });
 
